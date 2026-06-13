@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.allego.com/",
+  "name": "Allego",
+  "description": "Allego is an AI-powered sales enablement and revenue training platform providing a REST API for managing video coaching, content libraries, certifications, rep readiness assessments, conversation intelligence, and deal intelligence to help revenue teams improve performance.",
+  "url": "https://www.allego.com/",
+  "logo": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/company/allego/",
+    "https://twitter.com/allegosoftware"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://www.allego.com/support/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.allego.com/pricing/"
+  },
+  "hasPart": [
+    {
+      "@type": "WebAPI",
+      "name": "Allego API",
+      "description": "REST API for the Allego sales enablement platform enabling programmatic access to video coaching sessions, content libraries, learning modules, certifications, rep readiness assessments, conversation intelligence, and deal intelligence data.",
+      "url": "https://www.allego.com/platform/integrations/",
+      "documentation": "https://www.allego.com/platform/integrations/",
+      "termsOfService": "https://www.allego.com/legal/",
+      "category": [
+        "Sales Enablement",
+        "Video Coaching",
+        "Content Management",
+        "Certifications",
+        "Conversation Intelligence"
+      ]
+    }
+  ],
+  "knowsAbout": [
+    "Sales Enablement",
+    "Sales Training",
+    "Video Coaching",
+    "Content Management",
+    "Conversation Intelligence",
+    "Deal Intelligence",
+    "Revenue Enablement",
+    "Certifications",
+    "AI"
+  ]
+}
