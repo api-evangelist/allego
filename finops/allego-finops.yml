@@ -1,0 +1,52 @@
+name: Allego FinOps
+description: Financial operations guidance for managing Allego API and platform costs. Allego uses a per-user per-month model billed annually with custom enterprise pricing. All pricing is quote-based requiring direct engagement with the Allego sales team. Cost management focuses on seat optimization, contract term negotiation, and role-based tier assignment.
+url: https://www.allego.com/pricing/
+created: '2026-06-13'
+modified: '2026-06-13'
+pricingModel:
+  type: per-user-per-month
+  billingCycle: annual
+  publicPricing: false
+  selfServe: false
+  trialAvailable: false
+  freetier: false
+
+costFactors:
+  - name: Seat Count
+    description: Primary cost driver; price scales with number of licensed users. Volume discounts may apply for larger seat counts.
+    impact: high
+
+  - name: Contract Length
+    description: Standard 3-year annual contracts; shorter 2-year and 1-year terms available potentially at higher per-seat cost.
+    impact: high
+
+  - name: Role Type
+    description: Channel/Partner Sales users and non-revenue roles receive reduced per-seat pricing compared to core revenue team members.
+    impact: medium
+
+  - name: Module Selection
+    description: Allego offers modular purchasing across Modern Learning, AI Role Play, Content Management, and Digital Rooms + Deal Navigator. Cost varies by modules selected.
+    impact: high
+
+  - name: Full Suite Bundle
+    description: Purchasing the full suite may provide consolidation savings versus buying individual modules separately. Allego claims up to 50% savings versus managing 7 separate tools.
+    impact: medium
+
+costOptimizationTips:
+  - Audit active users regularly and remove or downgrade inactive seats before renewal
+  - Assign reduced-rate role types (Channel/Partner, non-revenue) to eligible users rather than full revenue-team licensing
+  - Negotiate multi-year contracts for better per-seat rates
+  - Evaluate full-suite bundling to consolidate tool spend versus licensing modules piecemeal
+  - Align seat count to actual headcount needs at contract renewal rather than over-provisioning
+
+contactForPricing:
+  url: https://www.allego.com/pricing/
+  email: support@allego.com
+  phone: +1.781.400.2453
+  notes: All pricing requires a direct quote from the Allego sales team; no public per-seat pricing is available
+
+notes:
+  - Allego does not publish per-seat pricing publicly
+  - Premium Success Services (implementation, integrations, training, enhanced support) are included in contracts
+  - All AI capabilities included at no additional cost
+  - API access for integration purposes is included as part of the platform subscription

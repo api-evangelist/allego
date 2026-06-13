@@ -1,0 +1,60 @@
+aid: allego
+name: Allego
+description: Allego is an AI-powered sales enablement and revenue training platform providing a REST API for managing video coaching, content libraries, certifications, rep readiness assessments, conversation intelligence, and deal intelligence to help revenue teams improve performance.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/allego/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Sales Enablement
+  - Sales Training
+  - Video Coaching
+  - Content Management
+  - Conversation Intelligence
+  - Deal Intelligence
+  - Revenue Enablement
+  - Certifications
+  - AI
+apis:
+  - aid: allego:allego-api
+    name: Allego API
+    description: REST API for the Allego sales enablement platform enabling programmatic access to video coaching sessions, content libraries, learning modules, certifications, rep readiness assessments, conversation intelligence, and deal intelligence data.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.allego.com/platform/integrations/
+    baseURL: https://exp-build.allego.com/api/
+    tags:
+      - Sales Enablement
+      - Video Coaching
+      - Content Management
+      - Certifications
+      - Conversation Intelligence
+    properties:
+      - type: Documentation
+        url: https://www.allego.com/platform/integrations/
+      - type: OpenAPI
+        url: https://exp-build.allego.com/api/
+common:
+  - type: Website
+    url: https://www.allego.com/
+  - type: Documentation
+    url: https://www.allego.com/platform/integrations/
+  - type: Blog
+    url: https://www.allego.com/blog/
+  - type: Pricing
+    url: https://www.allego.com/pricing/
+  - type: Support
+    url: https://www.allego.com/support/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/allego/
+  - type: X
+    url: https://twitter.com/allegosoftware
+  - type: Plans
+    url: plans/allego-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/allego-rate-limits.yml
+  - type: FinOps
+    url: finops/allego-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,63 @@
+name: Allego Plans and Pricing
+description: Allego offers modular, per-user per-month pricing billed annually. All plans include premium success services (implementation, integrations, training, and enhanced support) and all AI capabilities. Pricing is custom and quote-based with no public per-seat amounts; prospects must contact sales for details.
+url: https://www.allego.com/pricing/
+created: '2026-06-13'
+modified: '2026-06-13'
+plans:
+  - name: Modern Learning + Conversation Intelligence
+    description: Structured onboarding programs, continuous learning with AI Lesson Authoring, mobile-first offline-ready training, skills scorecards, Conversation Intelligence coaching, flash drills and flashcards for retention.
+    url: https://www.allego.com/pricing/
+    pricingModel: per-user
+    billingCycle: annual
+    price: custom
+    features:
+      - Structured onboarding programs and certification paths
+      - Continuous learning with AI Lesson Authoring
+      - Mobile-first, offline-ready training
+      - Skills scorecards and Conversation Intelligence coaching
+      - Flash drills and flashcards for retention
+
+  - name: AI Role Play
+    description: Practice against AI video avatars with real-time feedback, manager scoring, custom rubrics, skill certification, readiness dashboards, and pre-built scenarios ready to deploy.
+    url: https://www.allego.com/pricing/
+    pricingModel: per-user
+    billingCycle: annual
+    price: custom
+    features:
+      - Practice against AI video avatars with real-time feedback
+      - Manager scoring and custom rubrics
+      - Skill certification and readiness dashboards
+      - Pre-built scenarios ready to deploy
+
+  - name: Content Management
+    description: Unlimited content with flexible taxonomy, AI-generated tags and GenAI search, FlexDocs for personalized content, external sharing with engagement dashboards, and AI SmartDocs for rapid battlecard creation.
+    url: https://www.allego.com/pricing/
+    pricingModel: per-user
+    billingCycle: annual
+    price: custom
+    features:
+      - Unlimited content with flexible taxonomy
+      - AI-generated tags and GenAI search
+      - FlexDocs for personalized content
+      - External sharing with engagement dashboards
+      - AI SmartDocs for rapid battlecard creation
+
+  - name: Digital Rooms + Deal Navigator
+    description: Buyer room creation with templates, secure file sharing, live collaboration, Deal Navigator with AI recommendations, and AI Deal Expert Chat for meeting preparation.
+    url: https://www.allego.com/pricing/
+    pricingModel: per-user
+    billingCycle: annual
+    price: custom
+    features:
+      - Buyer room creation with templates
+      - Secure file sharing and live collaboration
+      - Deal Navigator with AI recommendations
+      - AI Deal Expert Chat for meeting prep
+
+notes:
+  - All pricing is custom and requires a quote from Allego sales team
+  - Standard contract term is 3 years paid annually; 2-year and 1-year options available
+  - Channel/Partner Sales users and non-revenue roles receive reduced pricing
+  - All AI capabilities included at no additional cost
+  - Premium Success Services included (implementation, integrations, training, enhanced support)
+  - No free plan or self-serve trial publicly available

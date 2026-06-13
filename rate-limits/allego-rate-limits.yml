@@ -1,0 +1,19 @@
+name: Allego API Rate Limits
+description: Allego does not publicly document specific API rate limits. As an enterprise sales enablement platform with custom pricing and quote-based contracts, rate limits and API quotas are expected to be defined per contract and communicated during implementation and onboarding. Contact Allego support or sales for specific rate limit information applicable to your account.
+url: https://www.allego.com/support/
+created: '2026-06-13'
+modified: '2026-06-13'
+rateLimits:
+  - name: API Rate Limits
+    description: Specific rate limits are not publicly disclosed; they are defined per enterprise contract and communicated during implementation.
+    type: enterprise
+    documented: false
+    notes:
+      - Rate limits are contract-specific and vary by plan and usage tier
+      - Contact Allego support at support@allego.com for rate limit details
+      - Phone support available at +1.781.400.2453
+
+notes:
+  - Allego does not publicly publish API rate limit thresholds
+  - Enterprise customers should review their service agreements for applicable limits
+  - For API access and integration questions, contact Allego via the support page at https://www.allego.com/support/
