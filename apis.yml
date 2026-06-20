@@ -1,7 +1,7 @@
 aid: allego
 name: Allego
 description: Allego is an AI-powered sales enablement and revenue training platform providing a REST API for managing video coaching, content libraries, certifications, rep readiness assessments, conversation intelligence, and deal intelligence to help revenue teams improve performance.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/allego/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -20,7 +20,7 @@ apis:
   - aid: allego:allego-api
     name: Allego API
     description: REST API for the Allego sales enablement platform enabling programmatic access to video coaching sessions, content libraries, learning modules, certifications, rep readiness assessments, conversation intelligence, and deal intelligence data.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.allego.com/platform/integrations/
     baseURL: https://exp-build.allego.com/api/
     tags:
