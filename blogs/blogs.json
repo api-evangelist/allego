@@ -2,19 +2,14 @@
   "repo": "allego",
   "feeds": [
     {
-      "source": "https://www.allego.com/blog/",
-      "feed_url": "",
-      "saved": 2,
-      "method": "agent-scrape"
-    },
-    {
       "source": "https://www.allego.com/platform/integrations/",
-      "feed_url": "",
+      "feed_url": "https://www.allego.com/platform/integrations/",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:21:29Z",
-  "post_count": 2,
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 4,
   "agent_pulled": "2026-06-27"
 }
