@@ -16,7 +16,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/allego.png
 url: https://raw.githubusercontent.com/api-evangelist/allego/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-14'
 specificationVersion: '0.19'
 tags:
   - Sales Enablement
@@ -31,10 +31,10 @@ tags:
 apis:
   - aid: allego:allego-api
     name: Allego API
-    description: REST API for the Allego sales enablement platform enabling programmatic access to video coaching sessions, content libraries, learning modules, certifications, rep readiness assessments, conversation intelligence, and deal intelligence data.
+    description: REST API for the Allego sales enablement platform enabling programmatic access to video coaching sessions, content libraries, learning modules, certifications, rep readiness assessments, conversation intelligence, and deal intelligence data. The base URL is the surface Allego's own OAuth 2.0 Authorization Server Metadata names as its token and dynamic-registration host; it is session/OAuth gated and returns HTTP 401 with a vendor JSON error envelope to anonymous callers.
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.allego.com/platform/integrations/
-    baseURL: https://exp-build.allego.com/api/
+    baseURL: https://my.allego.com/rest/
     tags:
       - Sales Enablement
       - Video Coaching
@@ -44,8 +44,31 @@ apis:
     properties:
       - type: Documentation
         url: https://www.allego.com/platform/integrations/
-      - type: OpenAPI
-        url: https://exp-build.allego.com/api/
+      - type: Authentication
+        url: authentication/allego-authentication.yml
+      - type: ErrorCatalog
+        url: errors/allego-problem-types.yml
+      - type: Conventions
+        url: conventions/allego-conventions.yml
+  - aid: allego:allego-mcp-api-server
+    name: Allego MCP API Server
+    description: First-party hosted Model Context Protocol server shipped with Allego 9 that exposes Allego deal intelligence, content and enablement to any MCP-compatible AI copilot. Verified live at https://mcp.allego.com/mcp, which answers a JSON-RPC tools/list POST with HTTP 401 and an RFC 9728 WWW-Authenticate challenge; the tool catalog is OAuth-gated and was not enumerated.
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+    humanURL: https://www.allego.com/platform/integrations/
+    baseURL: https://mcp.allego.com/mcp
+    tags:
+      - MCP
+      - AI
+      - Agents
+      - Deal Intelligence
+      - Conversation Intelligence
+    properties:
+      - type: MCPServer
+        url: mcp/allego-mcp.yml
+      - type: Documentation
+        url: https://www.allego.com/platform/integrations/
+      - type: Authentication
+        url: authentication/allego-authentication.yml
 common:
   - type: TrustCenter
     url: security/allego-trust-center.yml
@@ -71,6 +94,41 @@ common:
     url: rate-limits/allego-rate-limits.yml
   - type: FinOps
     url: finops/allego-finops.yml
+  - type: MCPServer
+    url: mcp/allego-mcp.yml
+  - type: WellKnown
+    url: well-known/allego-well-known.yml
+  - type: LLMsTxt
+    url: llms/allego-llms.txt
+  - type: Authentication
+    url: authentication/allego-authentication.yml
+  - type: Conformance
+    url: conformance/allego-conformance.yml
+  - type: Compliance
+    url: security/allego-trust-center.yml
+  - type: Lifecycle
+    url: lifecycle/allego-lifecycle.yml
+  - type: StatusPage
+    url: https://status.allego.com/
+  - type: Conventions
+    url: conventions/allego-conventions.yml
+  - type: ErrorCatalog
+    url: errors/allego-problem-types.yml
+  - type: TermsOfService
+    url: https://www.allego.com/terms-of-use/
+  - type: PrivacyPolicy
+    url: https://www.allego.com/privacy-policy/
+  - type: GitHubOrganization
+    url: https://github.com/allegosoftware
+  - type: Login
+    url: https://my.allego.com/login.do
+  - type: HelpCenter
+    url: https://help.allego.com/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
