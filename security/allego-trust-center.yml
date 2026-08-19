@@ -1,15 +1,99 @@
-generated: '2026-07-11'
+name: Allego Trust Portal
+description: >-
+  Allego publishes a public trust portal at https://www.allego.com/trust/ covering security
+  controls, AI data handling, availability, privacy compliance and regulated-industry
+  standards. There is no gated trust-center vendor portal (Vanta/Drata/SafeBase) and no
+  downloadable attestation; the certifications below are Allego's own published statements.
+generated: '2026-08-14'
 method: searched
 probe: true
 source: https://www.allego.com/trust/
 url: https://www.allego.com/trust/
+http_status: 200
+fetched: '2026-08-14'
 certifications:
-- SOC 2
-- ISO 27001
-- GDPR
+  - name: SOC 2 Type II
+    status: certified
+    detail: >-
+      "SOC 2 Type II certified, with annual third-party penetration and vulnerability
+      testing."
+  - name: ISO 27001
+    status: aligned
+    detail: >-
+      "Security practices align with ISO 27001 and OWASP standards, with code reviews
+      following Veracode standards." Allego's EU newsroom separately announces achieving
+      ISO certifications. The trust portal wording is alignment, not certification.
+  - name: GDPR
+    status: compliant
+    detail: 'Complies with GDPR (EU 2016/679).'
+  - name: UK Data Protection Law (UKDPL)
+    status: compliant
+  - name: CCPA
+    status: compliant
+    detail: Plus "applicable U.S. state privacy regulations".
+  - name: FINRA 17a-3 / 17a-4
+    status: supported
+    detail: >-
+      "Digital Safe supports FINRA 17a-3 and 17a-4 requirements for secure, immutable
+      records." Scoped to the Digital Safe capability.
+  - name: FDA 21 CFR Part 11
+    status: supported
+    detail: '"Learning records support FDA 21 CFR Part 11 requirements."'
+  - name: EU AI Act
+    status: aligned
+    detail: '"AI safeguards align with the EU AI Act and applicable regulatory standards."'
+controls:
+  encryption_in_transit: TLS 1.2
+  encryption_at_rest: minimum 256-bit
+  penetration_testing: annual third-party penetration and vulnerability testing
+  code_review: Veracode standards
+  physical: Data centers staffed 24x7 with strict physical access controls
+  access_control: >-
+    Role-based access controls; administrative responsibilities assignable by team or
+    region; approval workflows for external content sharing; each instance operates as a
+    separate security domain with no cross-instance access.
+ai_data_handling:
+  training_on_customer_data: false
+  statements:
+    - Customer data is never used to train or fine-tune large language models.
+    - Data is used only to answer the request and is deleted immediately after the response is generated.
+    - Third-party AI providers do not retain, reuse, or learn from Allego customer data.
+    - Customer data is never shared across environments and never benefits another customer.
+    - All AI outputs are grounded in customer-approved content, with encryption in transit and at rest.
+availability:
+  infrastructure: Globally distributed, Amazon AWS and Microsoft Azure
+  storage: Amazon S3, designed for 99.999999999% durability over a given year
+  redundancy: Systems designed with redundancy to eliminate single points of failure
+  updates: Delivered without disrupting availability
+  status_page: https://status.allego.com/
+  sla_published: false
+data_residency:
+  note: >-
+    "Data processing, storage, and visibility controls align with GDPR and UK data
+    protection requirements." Works Council requirements are supported. Specific regional
+    hosting options are not enumerated publicly.
+vulnerability_disclosure:
+  published: false
+  security_txt: false
+  bug_bounty: false
+  note: >-
+    No security.txt on any Allego host, no published vulnerability disclosure policy and no
+    HackerOne/Bugcrowd/Intigriti program found. Allego states it performs annual third-party
+    penetration and vulnerability testing, but publishes no channel for external reporters.
+    No VulnerabilityDisclosure or Security pointer is emitted.
 evidence:
-- source: https://www.allego.com/trust/
-  keywords:
-  - soc 2
-  - iso 27001
-  - gdpr
+  - source: https://www.allego.com/trust/
+    http_status: 200
+    keywords:
+      - soc 2 type ii
+      - iso 27001
+      - gdpr
+      - ccpa
+      - ukdpl
+      - finra 17a-4
+      - fda 21 cfr part 11
+      - eu ai act
+      - owasp
+      - veracode
+  - source: https://www.allego.com/.well-known/security.txt
+    http_status: 404

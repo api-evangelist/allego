@@ -1,8 +1,17 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.allego.com/pricing/
+plan_count: 4
+public_pricing: false
+note: >-
+  Allego publishes named, modular plan tiers on its public pricing page but no per-seat
+  amounts. Every tier is quote-based; there is no self-serve signup, free tier or trial.
+  Re-verified 2026-08-14 (HTTP 200).
 name: Allego Plans and Pricing
 description: Allego offers modular, per-user per-month pricing billed annually. All plans include premium success services (implementation, integrations, training, and enhanced support) and all AI capabilities. Pricing is custom and quote-based with no public per-seat amounts; prospects must contact sales for details.
 url: https://www.allego.com/pricing/
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-14'
 plans:
   - name: Modern Learning + Conversation Intelligence
     description: Structured onboarding programs, continuous learning with AI Lesson Authoring, mobile-first offline-ready training, skills scorecards, Conversation Intelligence coaching, flash drills and flashcards for retention.

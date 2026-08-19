@@ -1,0 +1,106 @@
+name: Allego API Conventions
+description: >-
+  Cross-cutting runtime semantics for the Allego API surface. Allego publishes no public API
+  reference and no OpenAPI, so nothing here is derived from a specification. Every field is
+  either read off a live anonymous response or recorded as an honest unknown. Do not treat
+  the unknowns as absences of behaviour — they are absences of published documentation.
+generated: '2026-08-14'
+method: probed
+source: live responses from https://my.allego.com/rest/ and https://mcp.allego.com/mcp
+surfaces:
+  - id: rest
+    base: https://my.allego.com/rest/
+    style: REST/JSON
+    gated: true
+    note: Session/OAuth gated; anonymous requests return HTTP 401.
+  - id: mcp
+    base: https://mcp.allego.com/mcp
+    style: MCP JSON-RPC 2.0 over streamable HTTP
+    gated: true
+    note: OAuth bearer gated; anonymous requests return HTTP 401 with an RFC 9728 challenge.
+authentication:
+  style: OAuth 2.0 bearer token (Authorization header), plus application session on the REST surface
+  detail: authentication/allego-authentication.yml
+  method: probed
+error_envelope:
+  format: vendor
+  rfc9457: false
+  content_type: application/json;charset=ISO-8859-1
+  shape:
+    status:
+      type: string — exception class name, e.g. InvalidAccessException
+      code: integer — vendor code; -1 observed
+      message: string — human-readable message
+  observed_example: '{"status":{"type":"InvalidAccessException","code":-1,"message":"Your session has expired. Please sign in again."}}'
+  observed_at: https://my.allego.com/rest/
+  detail: errors/allego-problem-types.yml
+  note: >-
+    Errors are wrapped in a `status` object rather than returned at the top level, and the
+    HTTP status code carries the real signal. The charset is ISO-8859-1, not UTF-8.
+idempotency:
+  supported: unknown
+  header: null
+  note: >-
+    No idempotency key header is documented and none could be observed anonymously. No
+    Idempotency pointer is emitted in apis.yml — absence of evidence is recorded as unknown,
+    not as support.
+pagination:
+  style: unknown
+  parameters: []
+  response_fields: []
+  note: Not documented publicly and not observable without credentials.
+field_expansion:
+  supported: unknown
+sparse_fieldsets:
+  supported: unknown
+metadata:
+  supported: unknown
+request_tracing:
+  request_id_header: null
+  observed_headers:
+    - name: x-amz-cf-id
+      note: >-
+        CloudFront edge request identifier present on my.allego.com responses. It is
+        infrastructure-level, not an Allego application request id, and Allego does not
+        document it as a support correlation handle.
+    - name: allego-ver
+      note: Internal build stamp, e.g. 90110032.
+versioning:
+  in_path: false
+  in_header: false
+  detail: lifecycle/allego-lifecycle.yml
+  note: No version segment in either published base URL and no published versioning policy.
+rate_limit_signaling:
+  headers_documented: false
+  headers_observed: []
+  status_on_exhaustion: unknown
+  detail: rate-limits/allego-rate-limits.yml
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After headers appeared on any anonymous response.
+    Allego publishes no rate-limit numbers; limits are contract-defined.
+security_headers:
+  host: my.allego.com
+  observed:
+    strict_transport_security: max-age=63072000; includeSubDomains
+    x_content_type_options: nosniff
+    x_frame_options: SAMEORIGIN
+    x_xss_protection: 1; mode=block
+    content_security_policy: "frame-ancestors 'self'; object-src 'none'; worker-src 'self' 'unsafe-eval' 'unsafe-inline' *.allego.com blob:; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.allego.com *.churnzero.net *.jquery.com *.mtcaptcha.com *.google.com *.refract.ai"
+    expect_ct: max-age=86400, enforce
+    x_robots_tag: noindex
+    cache_control: no-cache, no-store, must-revalidate
+  detail: security/allego-domain-security.yml
+data_export:
+  name: Analytics Data Feeds
+  description: >-
+    Allego publishes "structured data exports through Allego's Analytics Data Feeds" that
+    push enablement activity into BI environments. Format, schedule and delivery mechanism
+    are not documented publicly.
+  source: https://www.allego.com/platform/integrations/
+evidence:
+  - url: https://my.allego.com/rest/
+    http_status: 401
+    fetched: '2026-08-14'
+  - url: https://mcp.allego.com/mcp
+    http_status: 401
+    fetched: '2026-08-14'

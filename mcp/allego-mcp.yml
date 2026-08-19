@@ -1,0 +1,99 @@
+name: Allego MCP API Server
+description: >-
+  Allego ships a first-party, hosted Model Context Protocol server — marketed as the
+  "Allego MCP API Server" and shipped as part of Allego 9 — that exposes deal intelligence,
+  content and enablement to any MCP-compatible AI copilot. The endpoint was verified live:
+  https://mcp.allego.com/mcp answers a JSON-RPC POST with HTTP 401 and an RFC 9728
+  WWW-Authenticate challenge pointing at its own protected-resource metadata. The tool
+  catalog is therefore OAuth-gated and cannot be enumerated anonymously; no tool list is
+  recorded here because none was returned, and none is invented.
+generated: '2026-08-14'
+method: probed
+source: https://mcp.allego.com/mcp
+docs: https://www.allego.com/platform/integrations/
+status: published
+deployment:
+  mode: remote
+  endpoint: https://mcp.allego.com/mcp
+  auth: oauth
+  verified: probed
+transport:
+  protocol: streamable-http
+  accept:
+    - application/json
+    - text/event-stream
+  note: >-
+    A /sse path also answers on the same host (401), consistent with legacy HTTP+SSE
+    transport being served alongside streamable HTTP.
+authorization:
+  scheme: OAuth 2.1 bearer token
+  challenge: >-
+    WWW-Authenticate: Bearer resource_metadata="https://mcp.allego.com/.well-known/oauth-protected-resource"
+  protected_resource_metadata: https://mcp.allego.com/.well-known/oauth-protected-resource
+  authorization_server_metadata: https://mcp.allego.com/.well-known/oauth-authorization-server
+  issuer: https://mcp.allego.com
+  authorization_endpoint: https://my.allego.com/mcp/oauth2/authorize.do
+  token_endpoint: https://my.allego.com/rest/oauth2/token
+  registration_endpoint: https://my.allego.com/rest/oauth2/register
+  dynamic_client_registration: true
+  grant_types:
+    - authorization_code
+    - refresh_token
+    - client_credentials
+  pkce:
+    required: true
+    methods:
+      - S256
+  scopes_supported: []
+  scopes_note: >-
+    Allego publishes scopes_supported as an empty array in its protected-resource
+    metadata. No OAuth scope vocabulary is published, so no scopes/ artifact was derived.
+tools:
+  discovered: false
+  count: null
+  note: >-
+    tools/list returned HTTP 401 with an empty body. The live tool schemas require an
+    authenticated MCP session. Allego publishes no llms.txt tool list and no public API
+    reference, so there is no anonymous fallback source for tool names or inputSchema.
+    Nothing is recorded rather than guessed.
+capabilities_claimed:
+  source: https://www.allego.com/platform/integrations/
+  claims:
+    - Connect Allego to Salesforce Einstein, Microsoft Copilot, and enterprise self-hosted copilots
+    - Power multi-agent workflows, deal strategy agents, and GenAI search across approved content
+    - Keep every response governed and accurate with built-in access control enforcement
+  note: >-
+    These are Allego's marketing claims for the MCP server, quoted verbatim from the
+    integrations page. They are not a verified tool catalog.
+evidence:
+  - url: https://mcp.allego.com/mcp
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+    www_authenticate: 'Bearer resource_metadata="https://mcp.allego.com/.well-known/oauth-protected-resource"'
+    fetched: '2026-08-14'
+  - url: https://mcp.allego.com/.well-known/oauth-protected-resource
+    http_status: 200
+    content_type: application/json
+    fetched: '2026-08-14'
+  - url: https://mcp.allego.com/.well-known/oauth-authorization-server
+    http_status: 200
+    content_type: application/json
+    fetched: '2026-08-14'
+ownership:
+  verified: true
+  rationale: >-
+    mcp.allego.com is an Allego-controlled host (CNAME prodmcpsearch.allego.com behind an
+    Allego AWS ALB), its OAuth metadata names my.allego.com — Allego's customer application
+    host — as the authorization and token server, and Allego's own integrations page
+    markets "The Allego MCP API Server". Every identity signal points at Allego.
+notes:
+  - >-
+    This is a REMOTE MCP server, not a local stdio package. An agent with a valid Allego
+    OAuth token can reach it directly at https://mcp.allego.com/mcp with no install step.
+  - >-
+    No npm, PyPI or GitHub distribution of an Allego MCP server was found; there is no
+    local-stdio option to record.
+  - >-
+    No tool crosswalk artifact was produced: Allego publishes no OpenAPI, so there are no
+    REST operationIds to bind MCP tools to.

@@ -1,0 +1,219 @@
+name: Allego Standards Conformance
+description: >-
+  Assertions about the industry and cross-cutting standards Allego's API and platform
+  surface conform to. Entries marked conforms:true were verified against a document Allego
+  itself serves or publishes; entries marked conforms:false were probed and missed.
+  Entries sourced only from Allego marketing copy are marked with evidence type "claim"
+  and are not treated as verified conformance.
+generated: '2026-08-14'
+method: probed
+source: live probes of mcp.allego.com and my.allego.com plus www.allego.com/trust/ and /platform/integrations/
+conformance:
+  - id: oauth2
+    name: OAuth 2.0 / 2.1
+    conforms: true
+    evidence:
+      type: document
+      url: https://mcp.allego.com/.well-known/oauth-authorization-server
+      http_status: 200
+      detail: >-
+        Authorization-code + refresh-token + client-credentials grants, code response type,
+        published token and authorization endpoints.
+  - id: rfc8414
+    name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+    conforms: true
+    evidence:
+      type: document
+      url: https://mcp.allego.com/.well-known/oauth-authorization-server
+      http_status: 200
+      detail: Served at the canonical /.well-known path with issuer, endpoints and supported methods.
+  - id: rfc9728
+    name: OAuth 2.0 Protected Resource Metadata (RFC 9728)
+    conforms: true
+    evidence:
+      type: document
+      url: https://mcp.allego.com/.well-known/oauth-protected-resource
+      http_status: 200
+      detail: >-
+        Declares resource, authorization_servers and bearer_methods_supported; the MCP
+        endpoint's 401 carries a matching WWW-Authenticate resource_metadata pointer.
+  - id: rfc7591
+    name: OAuth 2.0 Dynamic Client Registration (RFC 7591)
+    conforms: true
+    evidence:
+      type: document
+      url: https://mcp.allego.com/.well-known/oauth-authorization-server
+      http_status: 200
+      detail: registration_endpoint https://my.allego.com/rest/oauth2/register is advertised.
+  - id: rfc7636
+    name: PKCE (RFC 7636)
+    conforms: true
+    evidence:
+      type: document
+      url: https://mcp.allego.com/.well-known/oauth-authorization-server
+      http_status: 200
+      detail: 'code_challenge_methods_supported: ["S256"]'
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence:
+      type: probe
+      url: https://mcp.allego.com/mcp
+      http_status: 401
+      detail: >-
+        First-party hosted MCP server ("Allego MCP API Server", part of Allego 9). The
+        endpoint enforces MCP's OAuth authorization spec; the tool catalog is auth-gated
+        and was not enumerated.
+  - id: oidc
+    name: OpenID Connect Discovery
+    conforms: false
+    evidence:
+      type: probe
+      url: https://my.allego.com/.well-known/openid-configuration
+      http_status: 404
+      detail: >-
+        No OIDC discovery document on any Allego host (my. 404, www. 301 to homepage,
+        mcp. 401). Allego's OAuth metadata is not an OIDC provider configuration.
+  - id: rfc9457
+    name: Problem Details for HTTP APIs (RFC 9457)
+    conforms: false
+    evidence:
+      type: probe
+      url: https://my.allego.com/rest/
+      http_status: 401
+      detail: >-
+        The REST error body is a vendor envelope ({"status":{"type","code","message"}})
+        served as application/json, not application/problem+json.
+  - id: rfc9116
+    name: security.txt (RFC 9116)
+    conforms: false
+    evidence:
+      type: probe
+      url: https://www.allego.com/.well-known/security.txt
+      http_status: 404
+      detail: No security.txt on www., my., api. or docs.allego.com.
+  - id: a2a
+    name: A2A Agent Card
+    conforms: false
+    evidence:
+      type: probe
+      url: https://www.allego.com/.well-known/agent-card.json
+      http_status: 301
+      detail: >-
+        No agent card on any Allego host. www. 301s every unknown path to the homepage;
+        my./api./docs. return 404; mcp. returns 401.
+  - id: scim
+    name: SCIM provisioning
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/platform/integrations/
+      detail: >-
+        "SCIM, bulk provisioning, and secure imports" is published under Human Resources
+        and Identity integrations. Version not stated; no SCIM endpoint is publicly reachable.
+  - id: lti
+    name: IMS Learning Tools Interoperability (LTI)
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/platform/integrations/
+      detail: >-
+        "Support Learning Tool Interoperability (LTI) and SCORM" published under Enterprise
+        Learning. Standards-based connections to LMS, LXP, LTI and LRS platforms.
+  - id: scorm
+    name: SCORM
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/platform/integrations/
+      detail: Published alongside LTI under Enterprise Learning integrations.
+  - id: xapi-lrs
+    name: LRS (Learning Record Store) integration
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/platform/integrations/
+      detail: >-
+        "Standards-based connections with LMS, LXP, LTI, and LRS platforms". The specific
+        LRS wire standard (xAPI / cmi5) is not named by Allego.
+  - id: soc2
+    name: SOC 2 Type II
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/trust/
+      detail: >-
+        "SOC 2 Type II certified, with annual third-party penetration and vulnerability
+        testing." Report available under NDA; no public attestation letter.
+  - id: iso27001
+    name: ISO/IEC 27001
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/trust/
+      detail: >-
+        Trust portal states security practices "align with ISO 27001 and OWASP standards".
+        Allego's EU newsroom separately announces ISO certification achievement.
+        Alignment language is weaker than a certification claim; recorded as published.
+  - id: gdpr
+    name: GDPR (EU 2016/679)
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/trust/
+      detail: >-
+        "Complies with GDPR (EU 2016/679), UK Data Protection Law (UKDPL), CCPA, and
+        applicable U.S. state privacy regulations."
+  - id: ccpa
+    name: CCPA
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/trust/
+      detail: Named in the same trust-portal compliance statement as GDPR and UKDPL.
+  - id: finra-17a-4
+    name: FINRA Rule 17a-3 / 17a-4
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/trust/
+      detail: >-
+        "Digital Safe supports FINRA 17a-3 and 17a-4 requirements for secure, immutable
+        records." Applies to the Digital Safe capability, not the whole platform.
+  - id: fda-21-cfr-part-11
+    name: FDA 21 CFR Part 11
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/trust/
+      detail: '"Learning records support FDA 21 CFR Part 11 requirements."'
+  - id: eu-ai-act
+    name: EU AI Act
+    conforms: true
+    evidence:
+      type: claim
+      url: https://www.allego.com/trust/
+      detail: '"AI safeguards align with the EU AI Act and applicable regulatory standards."'
+  - id: tls
+    name: TLS transport security
+    conforms: true
+    evidence:
+      type: probe
+      url: https://www.allego.com/
+      http_status: 200
+      detail: >-
+        TLS 1.3 negotiated on www.allego.com with HSTS max-age 31536000. my.allego.com
+        returns Strict-Transport-Security max-age=63072000; includeSubDomains, plus
+        X-Content-Type-Options, X-Frame-Options and a Content-Security-Policy.
+        Allego's trust portal states TLS 1.2 in transit and 256-bit at rest.
+summary:
+  verified_documents: 6
+  published_claims: 12
+  probed_absences: 4
+notes:
+  - >-
+    Allego publishes no OpenAPI, so no conformance could be derived from a specification.
+    Everything above is either a document Allego serves or a claim Allego publishes.
+  - >-
+    Certification claims are recorded because Allego publishes them; API Evangelist has not
+    seen the underlying SOC 2 report or ISO certificate.

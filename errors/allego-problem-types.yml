@@ -1,0 +1,75 @@
+name: Allego API Error Catalog
+description: >-
+  Error semantics for the Allego API surface. Allego publishes no OpenAPI and no public
+  error reference, so this catalog could not be derived from 4xx/5xx response definitions.
+  It records only what was observed live on anonymous requests, plus the shape of the
+  vendor error envelope those responses carry.
+generated: '2026-08-14'
+method: probed
+source: live responses from https://my.allego.com/rest/ and https://mcp.allego.com/mcp
+format: vendor
+rfc9457: false
+content_type: application/json;charset=ISO-8859-1
+envelope:
+  root: status
+  fields:
+    - name: status.type
+      type: string
+      description: Exception class name, e.g. InvalidAccessException.
+    - name: status.code
+      type: integer
+      description: Vendor-specific numeric code. -1 observed.
+    - name: status.message
+      type: string
+      description: Human-readable message intended for the end user.
+  example: '{"status":{"type":"InvalidAccessException","code":-1,"message":"Your session has expired. Please sign in again."}}'
+errors:
+  - http_status: 401
+    type: InvalidAccessException
+    code: -1
+    title: Session expired or missing credentials
+    message: Your session has expired. Please sign in again.
+    surface: https://my.allego.com/rest/
+    remediation: >-
+      Obtain an OAuth access token from https://my.allego.com/rest/oauth2/token, or
+      re-establish the application session at https://my.allego.com/login.do.
+    method: probed
+    observed_at: '2026-08-14'
+  - http_status: 401
+    type: oauth-bearer-challenge
+    code: null
+    title: Unauthorized — MCP resource requires an OAuth bearer token
+    message: ''
+    surface: https://mcp.allego.com/mcp
+    headers:
+      WWW-Authenticate: 'Bearer resource_metadata="https://mcp.allego.com/.well-known/oauth-protected-resource"'
+    body: empty
+    remediation: >-
+      Follow the RFC 9728 resource_metadata pointer to discover the authorization server,
+      register a client at the advertised registration_endpoint, and present a bearer token.
+    method: probed
+    observed_at: '2026-08-14'
+  - http_status: 404
+    type: not-found
+    code: null
+    title: Unknown path on the Allego application host
+    surface: https://my.allego.com/
+    body: text/html
+    remediation: Verify the path; Allego serves an HTML 404 page rather than a JSON error for unrouted paths.
+    method: probed
+    observed_at: '2026-08-14'
+summary:
+  documented_errors: 0
+  observed_errors: 3
+  problem_json: false
+notes:
+  - >-
+    Only anonymous, unauthenticated responses could be observed. The authenticated error
+    surface — validation errors, conflicts, rate-limit responses — is not represented here
+    and is not invented.
+  - >-
+    The REST envelope returns errors inside a `status` object with an application code that
+    is independent of the HTTP status. A client must read both.
+  - >-
+    The MCP endpoint returns an empty body on 401 and carries all signal in the
+    WWW-Authenticate header. JSON-RPC error objects were not observable anonymously.

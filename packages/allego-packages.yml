@@ -1,0 +1,72 @@
+name: Allego Client Packages
+description: >-
+  Search for first-party Allego client libraries, SDKs and MCP distributions across every
+  major public package registry. None were found. Allego publishes no public API reference
+  and no self-serve developer program, and ships its agent surface as a hosted remote MCP
+  server rather than an installable package, so there is nothing to distribute publicly.
+  This is a recorded zero, not an unchecked field — no SDKs pointer is emitted in apis.yml.
+generated: '2026-08-14'
+method: searched
+source: unauthenticated registry metadata queries, 2026-08-14
+package_count: 0
+official_package_count: 0
+packages: []
+registries_searched:
+  - registry: npm
+    endpoint: https://registry.npmjs.org/-/v1/search?text=allego
+    result: >-
+      One unrelated match (react-native-form-validation-allego, a third-party form
+      validation helper). Scoped probes @allego/mcp, @allego/sdk, allego-sdk and allego-api
+      all returned 404.
+    first_party_found: false
+  - registry: PyPI
+    endpoint: https://pypi.org/pypi/<name>/json
+    result: allego, allego-api and allego-sdk all returned 404.
+    first_party_found: false
+  - registry: RubyGems
+    endpoint: https://rubygems.org/api/v1/gems/allego.json
+    result: 404.
+    first_party_found: false
+  - registry: crates.io
+    endpoint: https://crates.io/api/v1/crates?q=allego
+    result: 0 results.
+    first_party_found: false
+  - registry: NuGet
+    endpoint: https://azuresearch-usnc.nuget.org/query?q=allego
+    result: >-
+      21 hits, all belonging to the unrelated "Allegory Axiom Framework". No Allego, Inc.
+      package.
+    first_party_found: false
+  - registry: Packagist
+    endpoint: https://packagist.org/search.json?q=allego
+    result: >-
+      77 hits, all for Allegro.pl (the Polish marketplace) or unrelated "allejo" packages.
+      No Allego, Inc. package.
+    first_party_found: false
+  - registry: Maven Central
+    endpoint: https://search.maven.org/solrsearch/select?q=allego
+    result: No first-party Allego artifact identified.
+    first_party_found: false
+  - registry: pkg.go.dev
+    endpoint: https://pkg.go.dev/search?q=allego
+    result: No first-party Allego module identified.
+    first_party_found: false
+source_repositories:
+  - url: https://github.com/allegosoftware
+    org: allegosoftware
+    http_status: 200
+    note: >-
+      Allego's GitHub organization exists and is public but carries no published client
+      library or SDK — the visible repository is a company profile repo, not a package.
+disambiguation:
+  warning: >-
+    Registry search for "allego" is dominated by Allegro.pl, the Polish e-commerce
+    marketplace, and by the unrelated "Allegory" .NET framework. None of those packages
+    belong to Allego, Inc. and none were recorded here.
+notes:
+  - >-
+    Allego's agent surface is the hosted MCP server at https://mcp.allego.com/mcp. It is
+    remote and OAuth-gated; there is no npx or pip install path to record.
+  - >-
+    Because no first-party package exists, no version or published date could be read, and
+    no SDK decay signal is available for this provider.

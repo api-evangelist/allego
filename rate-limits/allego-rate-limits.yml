@@ -1,8 +1,18 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.allego.com/support/
+limit_count: 0
+headers_documented: false
+headers_observed: []
+note: >-
+  Allego publishes no API rate limits anywhere public, and no X-RateLimit-*, RateLimit-* or
+  Retry-After headers appeared on any anonymous response from my.allego.com/rest/ or
+  mcp.allego.com/mcp. Limits are contract-defined. An honest zero, probed 2026-08-14.
 name: Allego API Rate Limits
 description: Allego does not publicly document specific API rate limits. As an enterprise sales enablement platform with custom pricing and quote-based contracts, rate limits and API quotas are expected to be defined per contract and communicated during implementation and onboarding. Contact Allego support or sales for specific rate limit information applicable to your account.
 url: https://www.allego.com/support/
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-14'
 rateLimits:
   - name: API Rate Limits
     description: Specific rate limits are not publicly disclosed; they are defined per enterprise contract and communicated during implementation.

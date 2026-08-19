@@ -1,0 +1,99 @@
+name: Allego API Lifecycle
+description: >-
+  Versioning, deprecation and availability posture for the Allego API surface. Allego runs
+  a real, public status page and ships a versioned platform (Allego 9, announced 2026-05-05),
+  but publishes no API versioning policy, no deprecation policy, no Sunset/Deprecation
+  header contract and no public API changelog. Everything below is either probed or an
+  honest recorded absence.
+generated: '2026-08-14'
+method: probed
+source: live probes of status.allego.com, my.allego.com and www.allego.com
+status_page:
+  published: true
+  url: https://status.allego.com/
+  provider: Instatus
+  machine_readable: https://status.allego.com/summary.json
+  observed_status: UP
+  http_status: 200
+  fetched: '2026-08-14'
+  note: >-
+    Instatus-hosted status page on an Allego-controlled CNAME (cname.instatus.com), branded
+    Allego, with a summary.json endpoint returning {"page":{"name":"Allego","status":"UP"}}.
+versioning:
+  policy_published: false
+  scheme: unpublished
+  observed:
+    - signal: allego-ver response header
+      value: '90110032'
+      url: https://my.allego.com/rest/
+      note: >-
+        my.allego.com/rest/ returns an `allego-ver` header carrying an internal build
+        number. This is a build stamp, not a negotiable API version, and Allego documents
+        no way for a client to pin it.
+    - signal: platform release name
+      value: Allego 9
+      url: https://www.allego.com/news/allego-9-ai-revenue-enablement-platform/
+      note: Major platform release announced 2026-05-05; a product version, not an API version.
+  note: >-
+    No version segment appears in the published API surface. The MCP resource is
+    https://mcp.allego.com/mcp with no version path; the REST surface is
+    https://my.allego.com/rest/ with no version path.
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  rfc8594: false
+  note: >-
+    No deprecation or sunset policy is published on any public Allego page, and no
+    Deprecation or Sunset header was observed on the anonymous responses available to probe.
+    No Deprecation pointer is emitted in apis.yml.
+changelog:
+  published: false
+  probed:
+    - url: https://www.allego.com/release-notes/
+      http_status: 301
+      note: 301 to https://www.allego.com/ — page does not exist.
+    - url: https://www.allego.com/whats-new/
+      http_status: 301
+      note: 301 to https://www.allego.com/ — page does not exist.
+  note: >-
+    Product news is published as press releases at https://www.allego.com/newsroom/, which
+    is not a dated API changelog. Release notes for the platform sit behind the customer
+    login at https://my.allego.com/help/. No changelog/ artifact was authored.
+sla:
+  published: false
+  note: >-
+    No public SLA document. The trust portal describes redundancy, globally distributed AWS
+    and Azure infrastructure, and S3 11-nines durability, but publishes no uptime commitment.
+  source: https://www.allego.com/trust/
+support:
+  url: https://www.allego.com/support/
+  help_center: https://help.allego.com/
+  help_center_gated: true
+  help_center_note: >-
+    help.allego.com 302s to https://my.allego.com/help/, which in turn 302s to
+    https://my.allego.com/login.do — the knowledge base, including any API reference, is
+    customer-only.
+retired_hosts:
+  - host: exp-build.allego.com
+    previous_role: baseURL recorded in apis.yml prior to 2026-08-14
+    https: false
+    observed: connection timeout on both http and https, 2026-08-14
+    note: >-
+      Resolves to an Allego AWS ELB but serves nothing. Treated as a dead/internal build
+      host and replaced in apis.yml with the API base Allego's own OAuth metadata names.
+evidence:
+  - url: https://status.allego.com/summary.json
+    http_status: 200
+    fetched: '2026-08-14'
+  - url: https://www.allego.com/release-notes/
+    http_status: 301
+    fetched: '2026-08-14'
+  - url: https://my.allego.com/help/
+    http_status: 302
+    fetched: '2026-08-14'
+    note: Location https://my.allego.com/login.do?target=https%3A%2F%2Fhelp.allego.com%2F
+  - url: https://exp-build.allego.com/api/
+    http_status: 0
+    fetched: '2026-08-14'
+    note: Connection timed out over both HTTP and HTTPS.

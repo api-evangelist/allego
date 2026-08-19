@@ -1,0 +1,206 @@
+name: Allego Well-Known Discovery Probe
+description: >-
+  Probe of RFC 8615 /.well-known/ discovery paths across every Allego host named in
+  apis.yml plus the hosts discovered during contract discovery. Two real documents were
+  served: the OAuth 2.0 Authorization Server Metadata (RFC 8414) and OAuth 2.0 Protected
+  Resource Metadata (RFC 9728) published by the Allego MCP API Server at mcp.allego.com.
+  Every other path 404d, 401d or 301-redirected to the marketing homepage. The 301s on
+  www.allego.com are a WordPress catch-all that sends every unknown path to
+  https://www.allego.com/ and are recorded as misses, not documents.
+generated: '2026-08-14'
+method: probed
+source: live HTTPS probes of Allego hosts, 2026-08-14
+hosts:
+  - www.allego.com
+  - my.allego.com
+  - mcp.allego.com
+  - api.allego.com
+  - docs.allego.com
+probes:
+  - host: mcp.allego.com
+    path: /.well-known/oauth-authorization-server
+    url: https://mcp.allego.com/.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    document: true
+    file: well-known/allego-mcp-oauth-authorization-server.json
+    note: >-
+      RFC 8414 Authorization Server Metadata. Names Allego's own authorization endpoint
+      (my.allego.com/mcp/oauth2/authorize.do), token endpoint (my.allego.com/rest/oauth2/token)
+      and an RFC 7591 dynamic client registration endpoint. PKCE S256 required.
+  - host: mcp.allego.com
+    path: /.well-known/oauth-protected-resource
+    url: https://mcp.allego.com/.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+    document: true
+    file: well-known/allego-mcp-oauth-protected-resource.json
+    note: >-
+      RFC 9728 Protected Resource Metadata. Declares https://mcp.allego.com/mcp as the
+      protected resource. scopes_supported is published as an empty array.
+  - host: mcp.allego.com
+    path: /.well-known/oauth-protected-resource/mcp
+    url: https://mcp.allego.com/.well-known/oauth-protected-resource/mcp
+    status: 200
+    content_type: application/json
+    document: true
+    file: well-known/allego-mcp-oauth-protected-resource.json
+    note: Identical body to /.well-known/oauth-protected-resource; the MCP-scoped alias.
+  - host: mcp.allego.com
+    path: /.well-known/security.txt
+    status: 401
+    document: false
+  - host: mcp.allego.com
+    path: /.well-known/openid-configuration
+    status: 401
+    document: false
+  - host: mcp.allego.com
+    path: /.well-known/api-catalog
+    status: 401
+    document: false
+  - host: mcp.allego.com
+    path: /.well-known/ai-plugin.json
+    status: 401
+    document: false
+  - host: mcp.allego.com
+    path: /.well-known/agent-card.json
+    status: 401
+    document: false
+  - host: mcp.allego.com
+    path: /.well-known/agent.json
+    status: 401
+    document: false
+  - host: www.allego.com
+    path: /.well-known/security.txt
+    status: 404
+    document: false
+  - host: www.allego.com
+    path: /.well-known/openid-configuration
+    status: 301
+    document: false
+    note: 301 to https://www.allego.com/ — WordPress catch-all, not a document.
+  - host: www.allego.com
+    path: /.well-known/oauth-authorization-server
+    status: 301
+    document: false
+    note: 301 to https://www.allego.com/ — WordPress catch-all, not a document.
+  - host: www.allego.com
+    path: /.well-known/api-catalog
+    status: 301
+    document: false
+    note: 301 to https://www.allego.com/ — WordPress catch-all, not a document.
+  - host: www.allego.com
+    path: /.well-known/ai-plugin.json
+    status: 301
+    document: false
+    note: 301 to https://www.allego.com/ — WordPress catch-all, not a document.
+  - host: www.allego.com
+    path: /.well-known/agent-card.json
+    status: 301
+    document: false
+    note: 301 to https://www.allego.com/ — WordPress catch-all, not a document.
+  - host: www.allego.com
+    path: /.well-known/agent.json
+    status: 301
+    document: false
+    note: 301 to https://www.allego.com/ — WordPress catch-all, not a document.
+  - host: my.allego.com
+    path: /.well-known/security.txt
+    status: 404
+    document: false
+  - host: my.allego.com
+    path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - host: my.allego.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - host: my.allego.com
+    path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - host: my.allego.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - host: my.allego.com
+    path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - host: my.allego.com
+    path: /.well-known/agent.json
+    status: 404
+    document: false
+  - host: api.allego.com
+    path: /.well-known/security.txt
+    status: 404
+    document: false
+  - host: api.allego.com
+    path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - host: api.allego.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - host: api.allego.com
+    path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - host: api.allego.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - host: api.allego.com
+    path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - host: api.allego.com
+    path: /.well-known/agent.json
+    status: 404
+    document: false
+  - host: docs.allego.com
+    path: /.well-known/security.txt
+    status: 404
+    document: false
+  - host: docs.allego.com
+    path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - host: docs.allego.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - host: docs.allego.com
+    path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - host: docs.allego.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - host: docs.allego.com
+    path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - host: docs.allego.com
+    path: /.well-known/agent.json
+    status: 404
+    document: false
+summary:
+  paths_probed: 35
+  documents_served: 3
+  security_txt: false
+  openid_configuration: false
+  oauth_metadata: true
+  agent_card: false
+notes:
+  - >-
+    Allego serves NO security.txt on any host. No SecurityTxt pointer is emitted.
+  - >-
+    No A2A agent card was served on any host. Per pipeline discipline no a2a/ artifact
+    was authored — an agent card must be published by the provider, never derived.
+  - >-
+    The WellKnown pointer in apis.yml is justified only by the two RFC 8414 / RFC 9728
+    documents mcp.allego.com genuinely serves at HTTP 200.

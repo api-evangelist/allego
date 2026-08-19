@@ -1,0 +1,114 @@
+name: Allego Authentication
+description: >-
+  Allego's API surface is authenticated with OAuth 2.0. This profile is built from
+  documents Allego actually publishes — the RFC 8414 Authorization Server Metadata and
+  RFC 9728 Protected Resource Metadata served by the Allego MCP API Server — plus the live
+  HTTP behaviour of the REST surface at my.allego.com/rest/. Allego publishes no public API
+  reference and no OpenAPI, so no securityScheme block could be derived from a spec; every
+  field below was read off a real response.
+generated: '2026-08-14'
+method: probed
+source: https://mcp.allego.com/.well-known/oauth-authorization-server
+docs: https://www.allego.com/platform/integrations/
+schemes:
+  - id: allego-oauth2
+    type: oauth2
+    description: >-
+      OAuth 2.0 / 2.1 authorization-code and client-credentials flows, PKCE S256 required,
+      with RFC 7591 dynamic client registration. Advertised by Allego's own authorization
+      server metadata document.
+    issuer: https://mcp.allego.com
+    authorization_endpoint: https://my.allego.com/mcp/oauth2/authorize.do
+    token_endpoint: https://my.allego.com/rest/oauth2/token
+    registration_endpoint: https://my.allego.com/rest/oauth2/register
+    response_types_supported:
+      - code
+    grant_types_supported:
+      - authorization_code
+      - refresh_token
+      - client_credentials
+    code_challenge_methods_supported:
+      - S256
+    token_endpoint_auth_methods_supported:
+      - none
+      - client_secret_post
+      - client_secret_basic
+    scopes: []
+    scopes_note: >-
+      scopes_supported is published as an empty array. Allego documents no OAuth scope
+      vocabulary publicly, so no scopes/ artifact was derived.
+    applies_to:
+      - https://mcp.allego.com/mcp
+      - https://my.allego.com/rest/
+    source: https://mcp.allego.com/.well-known/oauth-authorization-server
+    method: probed
+  - id: allego-bearer
+    type: http
+    scheme: bearer
+    description: >-
+      Bearer token in the Authorization header. Declared by Allego's protected-resource
+      metadata (bearer_methods_supported: ["header"]) and confirmed by the
+      WWW-Authenticate challenge returned by the MCP endpoint.
+    applies_to:
+      - https://mcp.allego.com/mcp
+    source: https://mcp.allego.com/.well-known/oauth-protected-resource
+    method: probed
+  - id: allego-session
+    type: session
+    description: >-
+      The REST surface at https://my.allego.com/rest/ also accepts the interactive
+      application session. An unauthenticated request returns HTTP 401 with the Allego JSON
+      error envelope and the message "Your session has expired. Please sign in again.",
+      and browser access to /help/ 302s to https://my.allego.com/login.do.
+    applies_to:
+      - https://my.allego.com/rest/
+    source: https://my.allego.com/rest/
+    method: probed
+enterprise_identity:
+  single_sign_on:
+    supported: true
+    description: Enterprise Single Sign-On is listed under Human Resources and Identity integrations.
+    source: https://www.allego.com/platform/integrations/
+  provisioning:
+    scim: true
+    bulk_import: true
+    description: >-
+      "SCIM, bulk provisioning, and secure imports" and "Automated onboarding and lifecycle
+      management" are published on the integrations page.
+    source: https://www.allego.com/platform/integrations/
+  identity_providers_named:
+    providers:
+      - Azure Active Directory
+      - Jamf Pro
+      - Microsoft Intune
+      - MobileIron
+      - ADP
+      - Kronos
+    note: Named in Allego's published integrations list; not a verified protocol claim.
+    source: https://www.allego.com/platform/integrations/
+evidence:
+  - url: https://mcp.allego.com/.well-known/oauth-authorization-server
+    http_status: 200
+    fetched: '2026-08-14'
+  - url: https://mcp.allego.com/.well-known/oauth-protected-resource
+    http_status: 200
+    fetched: '2026-08-14'
+  - url: https://mcp.allego.com/mcp
+    http_status: 401
+    fetched: '2026-08-14'
+    note: WWW-Authenticate Bearer challenge with resource_metadata pointer.
+  - url: https://my.allego.com/rest/
+    http_status: 401
+    fetched: '2026-08-14'
+    note: 'application/json body: {"status":{"type":"InvalidAccessException","code":-1,...}}'
+  - url: https://my.allego.com/.well-known/openid-configuration
+    http_status: 404
+    fetched: '2026-08-14'
+    note: No OIDC discovery document is published; the OAuth metadata is not an OIDC provider.
+notes:
+  - >-
+    No API key scheme was found. Allego publishes no self-serve developer credentials; API
+    access is arranged through the customer's Allego instance.
+  - >-
+    The authorization and token endpoints live on my.allego.com, the customer application
+    host, while the resource server is mcp.allego.com — both Allego-controlled.
