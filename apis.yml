@@ -27,6 +27,16 @@ tags:
   - Deal Intelligence
   - Revenue Enablement
   - Certifications
+  - Artificial Intelligence
+tags_raw:
+  - Sales Enablement
+  - Sales Training
+  - Video Coaching
+  - Content Management
+  - Conversation Intelligence
+  - Deal Intelligence
+  - Revenue Enablement
+  - Certifications
   - AI
 apis:
   - aid: allego:allego-api
@@ -57,6 +67,12 @@ apis:
     humanURL: https://www.allego.com/platform/integrations/
     baseURL: https://mcp.allego.com/mcp
     tags:
+      - MCP
+      - Artificial Intelligence
+      - Agents
+      - Deal Intelligence
+      - Conversation Intelligence
+    tags_raw:
       - MCP
       - AI
       - Agents
