@@ -1,6 +1,17 @@
 aid: allego
 name: Allego
 description: Allego is an AI-powered sales enablement and revenue training platform providing a REST API for managing video coaching, content libraries, certifications, rep readiness assessments, conversation intelligence, and deal intelligence to help revenue teams improve performance.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: approval
