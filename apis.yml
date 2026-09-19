@@ -37,7 +37,7 @@ tags:
   - Conversation Intelligence
   - Deal Intelligence
   - Revenue Enablement
-  - Certifications
+  - Certification
   - Artificial Intelligence
 tags_raw:
   - Sales Enablement
@@ -57,6 +57,12 @@ apis:
     humanURL: https://www.allego.com/platform/integrations/
     baseURL: https://my.allego.com/rest/
     tags:
+      - Sales Enablement
+      - Video Coaching
+      - Content Management
+      - Certification
+      - Conversation Intelligence
+    tags_raw:
       - Sales Enablement
       - Video Coaching
       - Content Management
