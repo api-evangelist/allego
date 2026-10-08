@@ -70,3 +70,34 @@ notes:
   - All AI capabilities included at no additional cost
   - Premium Success Services included (implementation, integrations, training, enhanced support)
   - No free plan or self-serve trial publicly available
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Modern Learning + Conversation Intelligence
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: AI Role Play
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Content Management
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Digital Rooms + Deal Navigator
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
