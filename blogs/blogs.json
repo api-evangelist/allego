@@ -2,6 +2,13 @@
   "repo": "allego",
   "feeds": [
     {
+      "source": "https://www.allego.com/blog/",
+      "feed_url": "https://www.allego.com/blog/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
       "source": "https://www.allego.com/platform/integrations/",
       "feed_url": "https://www.allego.com/platform/integrations/",
       "title": "",
@@ -9,7 +16,7 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 4,
   "agent_pulled": "2026-06-27",
   "feed_nature": "vendor-blog",
