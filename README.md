@@ -66,20 +66,118 @@
 
 Allego is an AI-powered sales enablement and revenue training platform providing a REST API for managing video coaching, content libraries, certifications, rep readiness assessments, conversation intelligence, and deal intelligence to help revenue teams improve performance.
 
-**Website:** [https://www.allego.com/](https://www.allego.com/)
+**Areas:** Sales Enablement · Sales Training · Video Coaching · Content Management · Conversation Intelligence · Deal Intelligence · Revenue Enablement · Certification · Artificial Intelligence
 
-**API / Integrations:** [https://www.allego.com/platform/integrations/](https://www.allego.com/platform/integrations/)
+## Allego on APIs.io
 
-**Pricing:** [https://www.allego.com/pricing/](https://www.allego.com/pricing/)
+Everything profiled for Allego is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/allego/](https://apis.io/providers/allego/)** — or go straight to one of the APIs or properties below.
 
-**Blog:** [https://www.allego.com/blog/](https://www.allego.com/blog/)
+### APIs (2)
 
-**Support:** [https://www.allego.com/support/](https://www.allego.com/support/)
+- [Allego API](https://apis.io/apis/allego/allego-api/) — REST API for the Allego sales enablement platform enabling programmatic access to video coaching sessions, content libraries, learning modules,…
+- [Allego MCP API Server](https://apis.io/apis/allego/allego-mcp-api-server/) — First-party hosted Model Context Protocol server shipped with Allego 9 that exposes Allego deal intelligence, content and enablement to any MCP-compatible…
 
-**LinkedIn:** [https://www.linkedin.com/company/allego/](https://www.linkedin.com/company/allego/)
+### Published properties
 
-**X / Twitter:** [https://twitter.com/allegosoftware](https://twitter.com/allegosoftware)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
----
+#### MCP servers (1)
 
-This repository contains the APIs.json profile for Allego as maintained by [API Evangelist](https://apievangelist.com).
+Model Context Protocol servers that expose the API to agents.
+
+- [Allego MCP API Server](https://apis.io/servers/allego/allego-mcp-api-server/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Allego Authentication](https://apis.io/security/allego/allego-authentication/)
+- [Allego Domain Security](https://apis.io/security/allego/allego-domain-security/)
+- [Allego Trust Center](https://apis.io/security/allego/allego-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Allego Plans Pricing](https://apis.io/plans/allego/allego-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Allego Rate Limits](https://apis.io/rate-limits/allego/allego-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Allego Finops](https://apis.io/finops/allego/allego-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.allego.com/)
+- [Documentation](https://www.allego.com/platform/integrations/)
+- [Pricing](https://www.allego.com/pricing/)
+- [Support](https://www.allego.com/support/)
+- [Blog](https://www.allego.com/blog/)
+- [Terms of service](https://www.allego.com/terms-of-use/)
+- [Privacy policy](https://www.allego.com/privacy-policy/)
+- [GitHub](https://github.com/allegosoftware)
+- [Status](https://status.allego.com/)
+
+## API Evangelist rating
+
+**Kin Score 26.3** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 5.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 53.9 |
+
+**Agent readiness 32.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 20.0** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/allego/](https://apis.io/providers/allego/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Allego: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/allego/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
